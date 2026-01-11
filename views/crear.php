@@ -7,11 +7,13 @@
     <h1>Crear Producto</h1>
 
     <form method="POST">
+        ID:<br>
+        <input type="text" name="id" required><br><br>
+
         Nombre:<br>
         <input type="text" name="nombre" required><br><br>
-
-        Precio:<br>
-        <input type="number" step="1" name="precio" required><br><br>
+        Formato:<br>
+        <input type="text" name="formato" required><br><br>
 
         <button type="submit">Guardar</button>
     </form>

@@ -1,5 +1,6 @@
 <?php
 require_once "autoload.php";
+
 session_start();
 
 $controller = new TracksController();
@@ -19,3 +20,4 @@ switch ($accion) {
     default:
         $controller->index();
 }
+?>

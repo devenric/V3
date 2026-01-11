@@ -2,26 +2,24 @@
 
 class TracksController {
 
-    private $gestorControlador;
+    private $gestor;
 
     public function __construct() {
-        $this->gestorControlador = new Gestor();
+        $this->gestor = new Gestor();
     }
 
     public function index() {
-        $productos = $this->gestorControlador->listar();
+        $productos = $this->gestor->listar();
         include "views/listar.php";
     }
 
     public function crear() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = uniqid(); 
+            $id = $_POST['id'];
             $nombre = $_POST['nombre'];
-            $precio = $_POST['formato'];
-
+            $formato = $_POST['formato'];
             $producto = new Tracks($id, $nombre, $formato);
-            $this->gestorControlador->agregar($productos);
-
+            $this->gestor->agregar($producto);  
             header("Location: index.php");
             exit;
         }
@@ -31,7 +29,7 @@ class TracksController {
 
     public function editar() {
         $id = $_POST['id'] ?? null;
-        $producto = $this->gestorControlador->buscar($id);
+        $producto = $this->gestor->buscar($id);
 
         if (!$producto) {
             echo "Producto no encontrado";
@@ -39,7 +37,7 @@ class TracksController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->gestorControlador->actualizar($id, $_POST['nombre'], $_POST['formato']);
+            $this->gestor->actualizar($id, $_POST['nombre'], $_POST['formato']);
             header("Location: index.php");
             exit;
         }
@@ -49,7 +47,7 @@ class TracksController {
 
     public function eliminar() {
         $id = $_POST['id'] ?? null;
-        $this->gestorControlador->eliminar($id);
+        $this->gestor->eliminar($id);
         header("Location: index.php");
         exit;
     }

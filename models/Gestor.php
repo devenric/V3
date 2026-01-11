@@ -18,7 +18,7 @@ class Gestor {
     }
 
     public function buscar($id) {
-        foreach (  $_SESSION['productos'] as $p) {
+        foreach ($_SESSION['productos'] as $p) {
             if ($p->getId() == $id) return $p;
         }
         return null;
@@ -39,9 +39,9 @@ class Gestor {
         //for ($i=0; $i<count(  $_SESSION['productos']);$i++)
                 //if (  $_SESSION['productos'][$i]->getId() == $id)
         //Las dos líneas siguientes sustituyen las anteriores
-        foreach (  $_SESSION['productos'] as $i => $p) {
+        foreach ($_SESSION['productos'] as $i => $p) {
             if ($p->getId() == $id) {
-                unset(  $_SESSION['productos'][$i]);
+                unset($_SESSION['productos'][$i]);
                   $_SESSION['productos'] = array_values(  $_SESSION['productos']);
                 return true;
             }

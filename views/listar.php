@@ -12,7 +12,7 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th>Precio</th>
+            <th>Formato</th>
             <th>Acciones</th>
         </tr>
 
@@ -20,7 +20,7 @@
         <tr>
             <td><?= $p->getId() ?></td>
             <td><?= $p->getNombre() ?></td>
-            <td><?= $p->getPrecio() ?></td>
+            <td><?= $p->getFormato() ?></td>
             <td>
                 <a href="index.php?accion=editar&id=<?= $p->getId() ?>">Editar</a>
                 |
